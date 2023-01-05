@@ -34,18 +34,17 @@ export default function Modal({ children, title, close }: any) {
                 <div className="mt-3 text-center sm:mt-5">
                   <div className="mt-2">{children}</div>
                 </div>
-                <div className="grid grid-cols-3 w-full justify-items-center">
-                  <div className="mt-5 sm:mt-6 col-start-2">
+               
+                  <div className="mt-5 sm:mt-6">
                     <button
                       type="button"
-                      className=" h-16 rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                      className=" h-16 w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
                       onClick={() => {
                         setOpen(false), close(false);
                       }}
                     >
                       Go back to BookList
                     </button>
-                  </div>
                 </div>
               </div>
             </Transition.Child>
