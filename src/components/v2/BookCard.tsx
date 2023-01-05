@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "./modal";
 import Card from "./Card";
-import { BsStarFill } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs/index";
 
 type Props = {
   title: string;
