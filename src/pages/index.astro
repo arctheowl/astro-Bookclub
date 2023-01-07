@@ -1,7 +1,8 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
-import IndexPage from '../pages/IndexPage.tsx';
+import Hero from "../components/v2/Hero";
+import BookSection from "../components/astro/ABookSection.astro";
 ---
 
 <!DOCTYPE html>
@@ -9,5 +10,10 @@ import IndexPage from '../pages/IndexPage.tsx';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-		<IndexPage client:load/>
+	<div class="h-screen">
+		<Hero client:load/>
+		<BookSection />
+	</div>
+		
+		
 </html>
