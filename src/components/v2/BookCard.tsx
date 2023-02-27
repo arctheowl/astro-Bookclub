@@ -47,7 +47,7 @@ const BookCard = ({
                 {author}
               </p>
 
-              <p className="md:pt-10 pt-5 md:text-xl w-full">{desc}</p>
+              <p className="md:pt-10 pt-5 md:text-xl w-full whitespace-pre-line">{desc}</p>
               <p className="md:pt-10 pt-5 md:text-xl text-purple-600">
                 {month + " " + year}
               </p>
