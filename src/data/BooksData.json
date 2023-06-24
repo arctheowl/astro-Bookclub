@@ -1,5 +1,14 @@
 [
   {
+    "Name": "The Book Club",
+    "Author": "C.J. Cooper",
+    "Month": "July",
+    "Year": "2023",
+    "Description": "The book club was her idea, of course. It was her way into our group. A chance to get close. I knew from the day she arrived that she couldn't be trusted. And I was right.  Alice didn't come to the village for peace and quiet. She came for revenge.",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.s3xvBDgMFriF7B016Sj6AgHaLo%26pid%3DApi&f=1&ipt=b322a8dde7163bf7ec1da051f59a5bd7397b0c86de789bb6f66eb9728e1e66e8&ipo=images"
+  },
+  {
     "Name": "The Midnight Library",
     "Author": "Matt Haig",
     "Month": "June",
