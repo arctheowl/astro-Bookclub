@@ -1,5 +1,23 @@
 [
-{
+  {
+    "Name": "The Christmas Appeal",
+    "Author": "Janice Hallet",
+    "Month": "December",
+    "Year": "2023",
+    "Description": "One dead Santa. A town full of suspects. Will you discover the truth? \n \nChristmas in Lower Lockwood, and the Fairway Players are busy rehearsing their festive pantomime, Jack and the Beanstalk, to raise money for the church roof appeal. But despite the season, goodwill is distinctly lacking amongst the amateur dramatics enthusiasts. Sarah-Jane is fending off threats to her new position as Chair, the fibreglass beanstalk might be full of asbestos, and a someone is intent on ruining the panto even before the curtain goes up.",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd28hgpri8am2if.cloudfront.net%2Fbook_images%2Fonix%2Fcvr9781668035887%2Fthe-christmas-appeal-9781668035887_lg.jpg&f=1&nofb=1&ipt=75aa321eac0a2038b71e1320f9ed396a1832d83b56fe6e5e0cf43c03137bffa5&ipo=images"
+  },
+  {
+    "Name": "The Satsuma Complex",
+    "Author": "Bob Mortimer",
+    "Month": "November",
+    "Year": "2023",
+    "Description": "Gary Thorn goes for a pint with a work acquaintance called Brendan. When Brendan leaves early, Gary meets a girl in the pub. He doesn’t catch her name, but falls for her anyway. When she suddenly disappears without saying goodbye, all Gary has to remember her by is the book she was reading: The Satsuma Complex. But when Brendan goes missing, Gary needs to track down the girl he now calls Satsuma to get some answers.",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F41G-%2B30LP3L.jpg&f=1&nofb=1&ipt=02cfc7f41bb489e4a23fc607764cefa06f4d5c34ea36ed9d146122d2844b21b5&ipo=images"
+  },
+  {
     "Name": "A Discovery of Witches",
     "Author": "Deborah Harkness",
     "Month": "October",
@@ -8,7 +26,7 @@
     "Rating": 0,
     "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.j5XvaRD3zT_u-gsywNRIpgHaLL%26pid%3DApi&f=1&ipt=3bebc8775efdf30c1b308f6714808d7d98f1359398ec4ee090211f68480890a0&ipo=images"
   },
-{
+  {
     "Name": "The No. 1 Ladies' Detective Agency",
     "Author": "Alexander McCall Smith",
     "Month": "September",
@@ -17,7 +35,7 @@
     "Rating": 0,
     "Image": "http://4.bp.blogspot.com/_CRIuw-gUvwU/TAgSlvVnSMI/AAAAAAAAA9g/he4j68l_0To/s1600/the-no-i-ladies-detective-agency.jpg"
   },
-{
+  {
     "Name": "Yellow Face",
     "Author": "Rebecca F. Kuang",
     "Month": "August",
