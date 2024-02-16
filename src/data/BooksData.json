@@ -1,5 +1,14 @@
 [
   {
+    "Name": "The Love of My Life",
+    "Author": "Rosie Walsh",
+    "Month": "February",
+    "Year": "2024",
+    "Description": "Emma loves her husband Leo and their young daughter Ruby: she’d do anything for them. But almost everything she's told them about herself is a lie.\n\nAnd she might just have got away with it, if it weren’t for her husband’s job. Leo is an obituary writer; Emma a well-known marine biologist. When she suffers a serious illness, Leo copes by doing what he knows best – researching and writing about his wife’s life. But as he starts to unravel the truth, he discovers the woman he loves doesn’t really exist. Even her name isn’t real.\n\nWhen the very darkest moments of Emma’s past finally emerge, she must somehow prove to Leo that she really is the woman he always thought she was . . .",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmrtns.sk%2Ftovar%2F_l%2F1919%2Fl1919031.jpg%3Fv%3D16910355492&f=1&nofb=1&ipt=aa255182247a6a3e84123f9ae5c026d906aabaa35bbfe2d443a3101242dc449e&ipo=images"
+  },
+  {
     "Name": "Days at the Morisaki Bookshop",
     "Author": "Stoshiro Yagisawa",
     "Month": "January",
@@ -101,7 +110,7 @@
   {
     "Name": "Magpie",
     "Author": "Elizabeth Day",
-    "Month": "Febuary",
+    "Month": "February",
     "Year": "2023",
     "Description": "Conceiving a baby is easier said than done, though, and Jake and Marisa’s perfect relationship is put to the test through months of fertility treatments and false starts. To make matters worse, Kate’s boundary-pushing turns into an all-out obsession--with Jake, with Marisa, and with their future child. Who is this woman? Why does she seem to know everything about Marisa and Jake?",
     "Rating": 6.1,
@@ -322,7 +331,7 @@
   {
     "Name": "The Alice Network",
     "Author": "Kate Quinn",
-    "Month": "Febuary",
+    "Month": "February",
     "Year": "2021",
     "Rating": 7.6,
     "Image": "/Images/TheAliceNetwork.jpg",
@@ -439,7 +448,7 @@
   {
     "Name": "Yes Man",
     "Author": "Danny Wallace",
-    "Month": "Febuary",
+    "Month": "February",
     "Year": "2020",
     "Rating": 3.6,
     "Image": "/Images/YesMan.jpg",
@@ -448,7 +457,7 @@
   {
     "Name": "Boy Swallows Universe",
     "Author": "Trent Dalton",
-    "Month": "Febuary",
+    "Month": "February",
     "Year": "2020",
     "Rating": 5.8,
     "Image": "/Images/BoySwallowsUniverse.jpg",
