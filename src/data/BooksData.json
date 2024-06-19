@@ -1,5 +1,14 @@
 [
   {
+    "Name": "The List",
+    "Author": "Yomi Adegoke",
+    "Month": "June",
+    "Year": "2024",
+    "Description": "Ola Olajide, a celebrated journalist at Womxxxn magazine, is set to marry the love of her life in one month’s time. Young, beautiful, and successful—she and her fiancé Michael are considered the “couple goals” of their social network and seem to have it all. That is, until one morning when they both wake up to the same message: “Oh my god, have you seen The List?”",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cGLji5v5YUQgDbG8T1f3-gAAAA%26pid%3DApi&f=1&ipt=273408248b9db86ed3bce0a9c0f8d3ac94a45fa3685162bb92dc8591c7851fac&ipo=images"
+  },
+  {
     "Name": "The Collected Regrets of Clover",
     "Author": "Mikki Brammer",
     "Month": "May",
@@ -197,9 +206,7 @@
     "Link": "https://www.amazon.co.uk/Under-Whispering-Door-TJ-Klune-ebook/dp/B095Z7RMJ3/ref=sr_1_1?keywords=under+the+whispering+door&qid=1659100491&s=books&sprefix=under+the+%2Cstripbooks%2C103&sr=1-1",
     "Rating": 5.1,
     "Image": "/Images/UnderTheWhisperingDoor.jpg",
-    "Tags": [
-      "Non-Ficton"
-    ]
+    "Tags": ["Non-Ficton"]
   },
   {
     "Name": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
