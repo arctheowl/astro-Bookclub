@@ -1,5 +1,14 @@
 [
   {
+    "Name": "I Hope This Finds You Well",
+    "Author": "Natalie Sue",
+    "Month": "July",
+    "Year": "2024",
+    "Description": "As far as Jolene is concerned, her interactions with her colleagues should start and end with her official duties as an admin for Supershops, Inc. Unfortunately, her irritating, incompetent coworkers don’t seem to understand the importance of boundaries. Her secret to survival? She vents her grievances in petty email postscripts, then changes the text colour to white so no one can see. That is, until one of her secret messages is exposed. Her punishment: sensitivity training (led by the suspiciously friendly HR guy, Cliff) and rigorous email restrictions. \n\nWhen an IT mix-up grants her access to her entire department’s private emails and DMs, Jolene knows she should report it, but who could resist reading what their coworkers are really saying? And when she discovers layoffs are coming, she realizes this might just be the key to saving her job. The plan is simple: gain her boss’s favour, convince HR she’s Supershops material and beat out the competition.",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A634%2F0*Iw_kzokfVXzeYeET.jpg&f=1&nofb=1&ipt=96e112bd2ba845df7e04998329d19f462af6ae87f1677e227643ac01cd53c1ec&ipo=images"
+  },
+  {
     "Name": "The List",
     "Author": "Yomi Adegoke",
     "Month": "June",
@@ -206,7 +215,9 @@
     "Link": "https://www.amazon.co.uk/Under-Whispering-Door-TJ-Klune-ebook/dp/B095Z7RMJ3/ref=sr_1_1?keywords=under+the+whispering+door&qid=1659100491&s=books&sprefix=under+the+%2Cstripbooks%2C103&sr=1-1",
     "Rating": 5.1,
     "Image": "/Images/UnderTheWhisperingDoor.jpg",
-    "Tags": ["Non-Ficton"]
+    "Tags": [
+      "Non-Ficton"
+    ]
   },
   {
     "Name": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
