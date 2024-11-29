@@ -1,5 +1,23 @@
 [
   {
+    "Name": "Happy Bloody Christmas",
+    "Author": "Jo Middleton",
+    "Month": "December",
+    "Year": "2024",
+    "Description": "Anna's Christmas Eve To Do List:\n\n1. Wrap the kids' presents​\n2. Peel the potatoes ​\n3. Get rid of the dead body?!\n\nHungover and exhausted after her family's annual party, all Anna Johnson wants for Christmas is to finish her to-do list and finally sit down with the world’s biggest glass of wine.\n\nBut when she stumbles across a dead body in her larder, her plans are well and truly buggered.\n\nA mysterious death in her home really is the last thing she needs, but with her judgemental in-laws arriving in less than twenty-four hours, turning her house into a crime scene is not an option. If she’s going to save Christmas, it’s up to Anna to find out what the hell’s gone on. Oh – and figure out what to do with the body before one of the kids finds it.",
+    "Rating": 0,
+    "Image": "https://m.media-amazon.com/images/I/71a8AkEUUeL._SL1500_.jpg"
+  },
+  {
+    "Name": "The Trial",
+    "Author": "Rob Rinder",
+    "Month": "November",
+    "Year": "2024",
+    "Description": "ONE MURDER. ONE IMPOSSIBLE CASE. WHO IS GUILTY? \n\n When hero policeman Grant Cliveden dies from a poisoning in the Old Bailey, it threatens to shake the country to its core.\n\n The evidence points to one man. Jimmy Knight has been convicted of multiple offences before and defending him will be no easy task. Not least because this is trainee barrister Adam Green's first case.\n\n But it will quickly become clear that Jimmy Knight is not the only person in Cliveden's past with an axe to grind.\n\n The only thing that's certain is that this is a trial which will push Adam - and the justice system itself - to the limit . . .",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn2.penguin.com.au%2Fcovers%2Foriginal%2F9781804940389.jpg&f=1&nofb=1&ipt=438057aee7236d741711c3447e2f20aecf479d00a94b2b585bae46c03f51243f&ipo=images"
+  },
+  {
     "Name": "The Pumpkin Spice Cafe",
     "Author": "Laurie Gilmore",
     "Month": "October",
@@ -141,7 +159,7 @@
     "Year": "2023",
     "Description": "The book club was her idea, of course. It was her way into our group. A chance to get close. I knew from the day she arrived that she couldn't be trusted. And I was right.  Alice didn't come to the village for peace and quiet. She came for revenge.",
     "Rating": 4.8,
-    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.s3xvBDgMFriF7B016Sj6AgHaLo%26pid%3DApi&f=1&ipt=b322a8dde7163bf7ec1da051f59a5bd7397b0c86de789bb6f66eb9728e1e66e8&ipo=images"
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.littlebrown.co.uk%2Fwp-content%2Fuploads%2F2019%2F02%2Fhbg-title-9781472129666-82.jpg%3Ffit%3D795%252C1250&f=1&nofb=1&ipt=360993f87f066f041223236704a12b7e94c3eb104d0d646c10986245a3e4a8f8&ipo=images"
   },
   {
     "Name": "The Midnight Library",
@@ -242,9 +260,7 @@
     "Link": "https://www.amazon.co.uk/Under-Whispering-Door-TJ-Klune-ebook/dp/B095Z7RMJ3/ref=sr_1_1?keywords=under+the+whispering+door&qid=1659100491&s=books&sprefix=under+the+%2Cstripbooks%2C103&sr=1-1",
     "Rating": 5.1,
     "Image": "/Images/UnderTheWhisperingDoor.jpg",
-    "Tags": [
-      "Non-Ficton"
-    ]
+    "Tags": ["Non-Ficton"]
   },
   {
     "Name": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
