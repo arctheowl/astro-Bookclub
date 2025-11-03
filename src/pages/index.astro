@@ -10,10 +10,10 @@ import BookSection from "../components/astro/ABookSection.astro";
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<div class="h-screen">
-		<Hero client:load/>
-		<BookSection />
-	</div>
-		
-		
+	<body>
+		<div class="h-screen">
+			<Hero client:load/>
+			<BookSection />
+		</div>
+	</body>
 </html>
