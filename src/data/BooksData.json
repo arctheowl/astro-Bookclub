@@ -1,5 +1,14 @@
 [
   {
+    "Name": "My Brilliant Friend",
+    "Author": "Elena Ferrante",
+    "Month": "December",
+    "Year": "2025",
+    "Description": "The opening novel of Ferrante’s acclaimed Neapolitan Quartet, My Brilliant Friend charts two best friends’ journey into adulthood in post-war Italy with greatemotional depth and luminous storytelling.",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.europaeditions.com%2Fspool%2Fcover_9781609455064__id1386_w600_t1538553701__1x.jpg&f=1&nofb=1&ipt=f7b9849427cd36cffd384652a49136d930fec9279e8c7ea0aa274cc85411304f"
+  },
+  {
     "Name": "Friends of Dorothy",
     "Author": "Sandi Toksvig",
     "Month": "November",
@@ -56,7 +65,7 @@
   {
     "Name": "The Seven Deaths of Evelyn Hardcastle",
     "Author": "Stuart Turton",
-    "Month": "June",
+    "Month": "May",
     "Year": "2025",
     "Description": "Somebody's going to be murdered at the ball tonight. It won't appear to be a murder and so the murderer won't be caught. Rectify that injustice and I'll show you the way out.'\n\nIt is meant to be a celebration but it ends in tragedy. As fireworks explode overhead, Evelyn Hardcastle, the young and beautiful daughter of the house, is killed. But Evelyn will not die just once.\n\nUntil Aiden - one of the guests summoned to Blackheath for the party - can solve her murder, the day will repeat itself, over and over again. Every time ending with the fateful pistol shot.\n\nThe only way to break this cycle is to identify the killer. But each time the day begins again, Aiden wakes in the body of a different guest. And someone is determined to prevent him ever escaping Blackheath...",
     "Rating": 0,
