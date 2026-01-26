@@ -1,5 +1,14 @@
 [
   {
+    "Name": "The Hichhickers Guide to the Galaxy",
+    "Author": "Douglas Adams",
+    "Month": "February",
+    "Year": "2026",
+    "Description": "The Hitchhiker's Guide to the Galaxy is a comedy science fiction series created by Douglas Adams. Originally a radio comedy broadcast on BBC Radio 4 in 1978, it was later adapted to other formats, including stage shows, novels, comic books, a 1981 TV series, a 1984 computer game, and three series of five-minute-long scripts for the BBC comedy series, The Young Ones, created by Rik Mayall and Ade Edmondson. Adams wrote a sixth novel, And Another Thing..., which was posthumously published in 2012, and which brought the story full circle.",
+    "Rating": 0,
+    "Image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.kobo.com%2Fbook-images%2Fab95a58c-cacf-405b-9dde-76bdae980af1%2F1200%2F1200%2FFalse%2Fthe-hitchhiker-s-guide-to-the-galaxy-the-illustrated-edition.jpg&f=1&nofb=1&ipt=ead437e988f3704ce125c8a71d8113a904434a86217c7ac0da8f46feabdef58e"
+  },
+  {
     "Name": "One of Us",
     "Author": "Elizabeth Day",
     "Month": "January",
