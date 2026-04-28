@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsStarFill } from "react-icons/bs";
 import SkeletonLoader from "./SkeletonLoader";
 
@@ -15,7 +15,11 @@ type Props = {
 
 export default function Modal({ title, image, author, desc, month, year, rating, close }: Props) {
   const [exiting, setExiting] = useState(false);
+  const panelRef   = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const scrollRef  = useRef<HTMLDivElement>(null);
 
+  // Esc key + body scroll lock
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
@@ -25,6 +29,70 @@ export default function Modal({ title, image, author, desc, month, year, rating,
     return () => {
       document.removeEventListener("keydown", handleEsc);
       document.body.style.overflow = "";
+    };
+  }, []);
+
+  // Swipe-down-to-dismiss (mobile bottom sheet only).
+  // Uses imperative non-passive listeners so preventDefault works,
+  // preventing the page behind from scrolling during the drag.
+  useEffect(() => {
+    const panel    = panelRef.current;
+    const scrollEl = scrollRef.current;
+    const backdrop = backdropRef.current;
+    if (!panel || !scrollEl || !backdrop) return;
+
+    let startY = 0;
+    let dragY  = 0;
+    let active = false;
+
+    const onTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+      dragY  = 0;
+      active = false;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const delta = e.touches[0].clientY - startY;
+      // Only activate when already scrolled to the top and pulling down
+      if (scrollEl.scrollTop === 0 && delta > 0) {
+        active = true;
+        dragY  = delta;
+        panel.style.transition   = "none";
+        panel.style.transform    = `translateY(${delta}px)`;
+        // Fade backdrop proportionally as the sheet moves away
+        backdrop.style.opacity   = String(Math.max(0.2, 1 - delta / 220));
+        e.preventDefault();
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (!active) return;
+      active = false;
+
+      if (dragY > 80) {
+        // Enough drag — animate out from current position then unmount
+        panel.style.transition    = "transform 0.28s cubic-bezier(0.4, 0, 1, 1)";
+        panel.style.transform     = "translateY(100%)";
+        backdrop.style.transition = "opacity 0.28s ease-in";
+        backdrop.style.opacity    = "0";
+        setTimeout(() => close(false), 280);
+      } else {
+        // Not enough — spring back
+        panel.style.transition    = "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+        panel.style.transform     = "translateY(0)";
+        backdrop.style.transition = "opacity 0.35s ease-out";
+        backdrop.style.opacity    = "";   // let CSS animation fill value take over
+      }
+    };
+
+    panel.addEventListener("touchstart", onTouchStart, { passive: true });
+    panel.addEventListener("touchmove",  onTouchMove,  { passive: false });
+    panel.addEventListener("touchend",   onTouchEnd,   { passive: true });
+
+    return () => {
+      panel.removeEventListener("touchstart", onTouchStart);
+      panel.removeEventListener("touchmove",  onTouchMove);
+      panel.removeEventListener("touchend",   onTouchEnd);
     };
   }, []);
 
@@ -44,6 +112,7 @@ export default function Modal({ title, image, author, desc, month, year, rating,
     >
       {/* Backdrop */}
       <div
+        ref={backdropRef}
         className={"book-detail-backdrop" + exitCls + " absolute inset-0"}
         style={{ background: "oklch(12% 0.015 50 / 0.68)" }}
         onClick={handleClose}
@@ -51,6 +120,7 @@ export default function Modal({ title, image, author, desc, month, year, rating,
 
       {/* Panel */}
       <div
+        ref={panelRef}
         className={"book-detail-panel" + exitCls + " relative z-10 bg-paper w-full overflow-hidden rounded-t-[22px] md:rounded-2xl md:max-w-2xl md:mx-4 flex flex-col"}
         style={{ maxHeight: "92dvh" }}
       >
@@ -59,16 +129,13 @@ export default function Modal({ title, image, author, desc, month, year, rating,
           <div className="w-9 h-1 rounded-full bg-sand" />
         </div>
 
-        {/*
-          Single adaptive content area.
-          Mobile: block + overflow-y-auto (whole area scrolls).
-          Desktop: flex-row + overflow-hidden (text column scrolls internally).
-        */}
-        <div className="flex-1 min-h-0 overflow-y-auto md:flex md:overflow-hidden">
+        {/* Content area — scrollable on mobile, side-by-side on desktop */}
+        <div
+          ref={scrollRef}
+          className="flex-1 min-h-0 overflow-y-auto md:flex md:overflow-hidden"
+        >
           {/* Cover — padded, maintains 2:3 aspect ratio */}
-          <div
-            className="flex-shrink-0 flex items-center justify-center bg-parchment p-5 md:w-[38%] md:p-6"
-          >
+          <div className="flex-shrink-0 flex items-center justify-center bg-parchment p-5 md:w-[38%] md:p-6">
             <div
               className="w-[45%] md:w-full rounded-xl overflow-hidden"
               style={{ aspectRatio: "2 / 3" }}
