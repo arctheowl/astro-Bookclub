@@ -1,94 +1,158 @@
-import { Fragment, useState, useEffect, useRef } from "react";
-import { Transition } from "@headlessui/react";
+import { useEffect, useState } from "react";
+import { BsStarFill } from "react-icons/bs";
+import SkeletonLoader from "./SkeletonLoader";
 
-export default function Modal({ children, title, close }: any) {
-  const [open, setOpen] = useState(true);
-  const modalRef = useRef<HTMLDivElement>(null);
+type Props = {
+  title: string;
+  image: string;
+  author: string;
+  desc: string;
+  month: string;
+  year: string;
+  rating: number;
+  close: (v: boolean) => void;
+};
 
-  // Handle ESC key press
+export default function Modal({ title, image, author, desc, month, year, rating, close }: Props) {
+  const [exiting, setExiting] = useState(false);
+
   useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleClose();
-      }
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
     };
-
-    if (open) {
-      document.addEventListener('keydown', handleEscKey);
-      // Focus the modal when it opens
-      if (modalRef.current) {
-        modalRef.current.focus();
-      }
-    }
-
+    document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener('keydown', handleEscKey);
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
     };
-  }, [open]);
+  }, []);
 
   const handleClose = () => {
-    setOpen(false);
-    close(false);
+    setExiting(true);
+    setTimeout(() => close(false), 300);
   };
 
-  const handleBackdropClick = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget) {
-      handleClose();
-    }
-  };
+  const exitCls = exiting ? " book-detail-exiting" : "";
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <div className="relative z-20">
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div 
-            className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
-            onClick={handleBackdropClick}
-          />
-        </Transition.Child>
+    <div
+      className="fixed inset-0 z-50 flex flex-col justify-end md:justify-center md:items-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+    >
+      {/* Backdrop */}
+      <div
+        className={"book-detail-backdrop" + exitCls + " absolute inset-0"}
+        style={{ background: "oklch(12% 0.015 50 / 0.68)" }}
+        onClick={handleClose}
+      />
 
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex justify-center p-4 text-center sm:items-center sm:p-0 md:min-h-full">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              enterTo="opacity-100 translate-y-0 sm:scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      {/* Panel */}
+      <div
+        className={"book-detail-panel" + exitCls + " relative z-10 bg-paper w-full overflow-hidden rounded-t-[22px] md:rounded-2xl md:max-w-2xl md:mx-4 flex flex-col"}
+        style={{ maxHeight: "92dvh" }}
+      >
+        {/* Mobile drag handle */}
+        <div className="flex justify-center pt-3 pb-1 flex-shrink-0 md:hidden">
+          <div className="w-9 h-1 rounded-full bg-sand" />
+        </div>
+
+        {/*
+          Single adaptive content area.
+          Mobile: block + overflow-y-auto (whole area scrolls).
+          Desktop: flex-row + overflow-hidden (text column scrolls internally).
+        */}
+        <div className="flex-1 min-h-0 overflow-y-auto md:flex md:overflow-hidden">
+          {/* Cover — padded, maintains 2:3 aspect ratio */}
+          <div
+            className="flex-shrink-0 flex items-center justify-center bg-parchment p-5 md:w-[38%] md:p-6"
+          >
+            <div
+              className="w-[45%] md:w-full rounded-xl overflow-hidden"
+              style={{ aspectRatio: "2 / 3" }}
             >
-              <div 
-                ref={modalRef}
-                tabIndex={-1}
-                className="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:w-full md:max-w-7xl sm:p-6 w-screen focus:outline-none"
-              >
-                <div className="mt-3 text-center sm:mt-5">
-                  <div className="mt-2">{children}</div>
-                </div>
-               
-                <div className="mt-5 sm:mt-6">
-                  <button
-                    type="button"
-                    className="h-16 w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm transition-colors duration-200"
-                    onClick={handleClose}
-                  >
-                    Go back to BookList
-                  </button>
-                </div>
+              <SkeletonLoader
+                src={image}
+                alt={`Cover of ${title}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Text */}
+          <div className="p-6 pb-10 md:p-8 md:flex-1 md:overflow-y-auto">
+            {rating > 1 && (
+              <div className="flex items-center gap-1.5 mb-5">
+                <BsStarFill
+                  style={{ color: "oklch(40% 0.1 30)", width: "0.9rem", height: "0.9rem" }}
+                />
+                <span
+                  className="font-sans text-sm font-medium"
+                  style={{ color: "oklch(40% 0.1 30)" }}
+                >
+                  {rating}
+                </span>
               </div>
-            </Transition.Child>
+            )}
+
+            <h2
+              className="font-serif text-ink leading-snug mb-2"
+              style={{ fontSize: "clamp(1.4rem, 5vw, 1.9rem)" }}
+            >
+              {title}
+            </h2>
+
+            <p
+              className="font-sans font-medium mb-1"
+              style={{ color: "oklch(40% 0.1 30)", fontSize: "0.95rem" }}
+            >
+              {author}
+            </p>
+
+            <p
+              className="font-sans mb-6"
+              style={{ color: "oklch(48% 0.02 50)", fontSize: "0.82rem" }}
+            >
+              {month} {year}
+            </p>
+
+            <p
+              className="font-sans text-ink leading-relaxed whitespace-pre-line"
+              style={{ fontSize: "0.95rem" }}
+            >
+              {desc}
+            </p>
           </div>
         </div>
+
+        {/* Close button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 z-20 flex items-center justify-center rounded-full transition-colors duration-200 hover:bg-parchment"
+          style={{
+            width: "2rem",
+            height: "2rem",
+            background: "oklch(93% 0.01 58)",
+            color: "oklch(48% 0.02 50)",
+          }}
+          aria-label="Close"
+        >
+          <svg
+            width="11"
+            height="11"
+            viewBox="0 0 11 11"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <line x1="1" y1="1" x2="10" y2="10" />
+            <line x1="10" y1="1" x2="1"  y2="10" />
+          </svg>
+        </button>
       </div>
-    </Transition.Root>
+    </div>
   );
 }

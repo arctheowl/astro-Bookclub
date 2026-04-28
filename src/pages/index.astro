@@ -11,9 +11,7 @@ import BookSection from "../components/astro/ABookSection.astro";
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<div class="h-screen">
-			<Hero client:load/>
-			<BookSection />
-		</div>
+		<Hero client:load />
+		<BookSection />
 	</body>
 </html>
