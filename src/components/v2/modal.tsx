@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { BsStarFill } from "react-icons/bs";
 import SkeletonLoader from "./SkeletonLoader";
 
@@ -14,27 +14,37 @@ type Props = {
 };
 
 export default function Modal({ title, image, author, desc, month, year, rating, close }: Props) {
-  const [exiting, setExiting] = useState(false);
-  const panelRef   = useRef<HTMLDivElement>(null);
+  const panelRef    = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
-  const scrollRef  = useRef<HTMLDivElement>(null);
+  const scrollRef   = useRef<HTMLDivElement>(null);
 
-  // Esc key + body scroll lock
+  // Single dismiss used by every close path — always slides down consistently
+  const dismiss = () => {
+    const panel    = panelRef.current;
+    const backdrop = backdropRef.current;
+    if (panel && backdrop) {
+      panel.style.animation    = "none";           // clear entry animation (no fill fighting inline)
+      panel.style.transition   = "transform 0.28s cubic-bezier(0.4, 0, 1, 1)";
+      panel.style.transform    = "translateY(100%)";
+      backdrop.style.transition = "opacity 0.28s ease-in";
+      backdrop.style.opacity   = "0";
+    }
+    setTimeout(() => close(false), 280);
+  };
+
+  // ESC key + body scroll lock
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", handleEsc);
+    const onEsc = (e: KeyboardEvent) => { if (e.key === "Escape") dismiss(); };
+    document.addEventListener("keydown", onEsc);
     document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener("keydown", handleEsc);
+      document.removeEventListener("keydown", onEsc);
       document.body.style.overflow = "";
     };
   }, []);
 
-  // Swipe-down-to-dismiss (mobile bottom sheet only).
-  // Uses imperative non-passive listeners so preventDefault works,
-  // preventing the page behind from scrolling during the drag.
+  // Swipe-down-to-dismiss (mobile).
+  // Non-passive touchmove so preventDefault stops the page scrolling during drag.
   useEffect(() => {
     const panel    = panelRef.current;
     const scrollEl = scrollRef.current;
@@ -53,14 +63,17 @@ export default function Modal({ title, image, author, desc, month, year, rating,
 
     const onTouchMove = (e: TouchEvent) => {
       const delta = e.touches[0].clientY - startY;
-      // Only activate when already scrolled to the top and pulling down
       if (scrollEl.scrollTop === 0 && delta > 0) {
+        if (!active) {
+          // Clear entry animation the moment dragging begins so inline
+          // transform isn't silently overridden by animation-fill-mode
+          panel.style.animation = "none";
+        }
         active = true;
         dragY  = delta;
-        panel.style.transition   = "none";
-        panel.style.transform    = `translateY(${delta}px)`;
-        // Fade backdrop proportionally as the sheet moves away
-        backdrop.style.opacity   = String(Math.max(0.2, 1 - delta / 220));
+        panel.style.transition = "none";
+        panel.style.transform  = `translateY(${delta}px)`;
+        backdrop.style.opacity = String(Math.max(0.2, 1 - delta / 220));
         e.preventDefault();
       }
     };
@@ -68,20 +81,14 @@ export default function Modal({ title, image, author, desc, month, year, rating,
     const onTouchEnd = () => {
       if (!active) return;
       active = false;
-
       if (dragY > 80) {
-        // Enough drag — animate out from current position then unmount
-        panel.style.transition    = "transform 0.28s cubic-bezier(0.4, 0, 1, 1)";
-        panel.style.transform     = "translateY(100%)";
-        backdrop.style.transition = "opacity 0.28s ease-in";
-        backdrop.style.opacity    = "0";
-        setTimeout(() => close(false), 280);
+        dismiss();
       } else {
-        // Not enough — spring back
+        // Not far enough — spring back to resting position
         panel.style.transition    = "transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
         panel.style.transform     = "translateY(0)";
         backdrop.style.transition = "opacity 0.35s ease-out";
-        backdrop.style.opacity    = "";   // let CSS animation fill value take over
+        backdrop.style.opacity    = "";
       }
     };
 
@@ -96,13 +103,6 @@ export default function Modal({ title, image, author, desc, month, year, rating,
     };
   }, []);
 
-  const handleClose = () => {
-    setExiting(true);
-    setTimeout(() => close(false), 300);
-  };
-
-  const exitCls = exiting ? " book-detail-exiting" : "";
-
   return (
     <div
       className="fixed inset-0 z-50 flex flex-col justify-end md:justify-center md:items-center"
@@ -113,15 +113,15 @@ export default function Modal({ title, image, author, desc, month, year, rating,
       {/* Backdrop */}
       <div
         ref={backdropRef}
-        className={"book-detail-backdrop" + exitCls + " absolute inset-0"}
+        className="book-detail-backdrop absolute inset-0"
         style={{ background: "oklch(12% 0.015 50 / 0.68)" }}
-        onClick={handleClose}
+        onClick={dismiss}
       />
 
       {/* Panel */}
       <div
         ref={panelRef}
-        className={"book-detail-panel" + exitCls + " relative z-10 bg-paper w-full overflow-hidden rounded-t-[22px] md:rounded-2xl md:max-w-2xl md:mx-4 flex flex-col"}
+        className="book-detail-panel relative z-10 bg-paper w-full overflow-hidden rounded-t-[22px] md:rounded-2xl md:max-w-2xl md:mx-4 flex flex-col"
         style={{ maxHeight: "92dvh" }}
       >
         {/* Mobile drag handle */}
@@ -196,7 +196,7 @@ export default function Modal({ title, image, author, desc, month, year, rating,
 
         {/* Close button */}
         <button
-          onClick={handleClose}
+          onClick={dismiss}
           className="absolute top-4 right-4 z-20 flex items-center justify-center rounded-full transition-colors duration-200 hover:bg-parchment"
           style={{
             width: "2rem",
